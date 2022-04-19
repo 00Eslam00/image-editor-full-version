@@ -4,8 +4,8 @@
 // Author1 and ID and Group: Saead Mohamed Mohamed 20210159 S15
 // Author2 and ID and Group: Eslam Amin Mostafa 20210064 S15
 // Author3 and ID and Group: Karim Mohamed Shebl 20210300 S15
-// Teaching Assistant:  Nesma Mohamed
-// Purpose: 12 filter to make edits on bmp images
+// Teaching Assistant:  Nesma Mohamed & Yousra Ayman
+// Purpose: 12 filters to make edits on bmp images
 
 #include <iostream>
 #include <fstream>
@@ -37,7 +37,8 @@ void loadImage()
 	}
 	else
 	{
-		cout << "\ninvalid name\ntry again:\n";
+		cout << "\n invalid name \n";
+		cout << " try again: \n ";
 		loadImage();
 	}
 }
@@ -63,8 +64,9 @@ void loadSecondImage()
 	}
 	else
 	{
-		cout << "\ninvalid name\ntry again:\n";
-		loadSecondImage();
+		cout << "\n invalid name \n";
+		cout << " try again: \n ";
+        loadSecondImage();
 	}
 }
 
@@ -157,7 +159,7 @@ void flipImageVertically()
 void mirrorDown()
 {
 	//mirror the down side
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < SIZE/2; i++)
 	{
 		for (int j = 0; j < SIZE; j++)
 		{
@@ -169,7 +171,7 @@ void mirrorDown()
 void mirrorUp()
 {
 	// mirror the upper side
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < SIZE/2; i++)
 	{
 		for (int j = 0; j < SIZE; j++)
 		{
@@ -183,7 +185,7 @@ void mirrorLeft()
 	// mirror the left side
 	for (int i = 0; i < SIZE; i++)
 	{
-		for (int j = 0; j < SIZE; j++)
+		for (int j = 0; j < SIZE/2; j++)
 		{
 			image[i][255 - j] = image[i][j];
 		}
@@ -195,7 +197,7 @@ void mirrorRight()
 	//mirror the right side
 	for (int i = 0; i < SIZE; i++)
 	{
-		for (int j = 0; j < SIZE; j++)
+		for (int j = 0; j < SIZE/2; j++)
 		{
 			image[i][j] = image[i][255 - j];
 		}
@@ -257,10 +259,10 @@ void enlarge()
 	else if (choice == 4)
 		x = 128, y = 128, z = 128;
 
-	// array to carry pixals of one part in this photo
+	// array to carry pixels of one part in this photo
 	int carry[SIZE][SIZE] = {{0}, {0}};
 
-	// for loop to put one and no and one other pixal in this array
+	// for loop to put one skip the other pixel in this array
 	for (int i = 0; i < SIZE; i += 2)
 	{
 		x = z;
@@ -272,7 +274,7 @@ void enlarge()
 		y++;
 	}
 
-	//this for loop to fill the empty pixals with the average of surrounded pixals around it
+	//this for loop to fill the empty pixels with the average of surrounded pixels around it
 	for (int i = 0; i < SIZE; i++)
 	{
 		for (int j = 0; j < SIZE; j++)
@@ -294,7 +296,7 @@ void enlarge()
 		}
 	}
 
-	// to fill the main array with pixals of sub array "carry"
+	// to fill the main array with pixels of sub array "carry"
 	for (int i = 0; i < SIZE; i++)
 	{
 		for (int j = 0; j < SIZE; j++)
@@ -316,7 +318,7 @@ void enlarge()
 void darken_Lighten()
 {
 	string s;
-	cout << "To darken an image press d\nTo lighten an image press l\n";
+	cout << " To darken an image press (d) \n To lighten an image press (l) \n";
 	cin >> s;
 	if (s == "d")
 	{
@@ -351,7 +353,7 @@ void darken_Lighten()
 void rotate()
 {
 	int all = ceil(SIZE / 2.0), ch;
-	cout << "choose \n[ 1 ] rot 90\n[ 2 ] rot 180\n[ 3 ] rot 270\nchoice : ";
+	cout << "choose \n [ 1 ] rotate 90 \n [ 2 ] rotate 180 \n [ 3 ] rotate 270 \n choice : ";
 	cin >> ch;
 	if (ch == 1)
 	{
@@ -458,16 +460,16 @@ void shuffle_image()
 	//to store new image parts
 	int imaget[SIZE][SIZE] = {{0}, {0}};
 
-	// first part
+	// first quarter
 	int image1[SIZE / 2][SIZE / 2];
 
-	// second part
+	// second quarter
 	int image2[SIZE / 2][SIZE / 2];
 
-	// third part
+	// third quarter
 	int image3[SIZE / 2][SIZE / 2];
 
-	// fourth part
+	// fourth quarter
 	int image4[SIZE / 2][SIZE / 2];
 
 	// fill first part of image
@@ -638,9 +640,9 @@ void blurImage()
 int main()
 {
 	string choice, flipDetect, mirordetect;
-	bool isVAlid = true, contin = true, load = true;
+	bool contin = true, load = true;
 
-	while (isVAlid || contin)
+	while (contin)
 	{
 		if (load)
 		{
@@ -670,7 +672,6 @@ int main()
 		if (choice == "1")
 		{
 			ConvertBlackAndWhite();
-			isVAlid = false;
 		}
 
 		else if (choice == "2")
@@ -690,13 +691,11 @@ int main()
 			if (flipDetect == "h" || flipDetect == "horizontally")
 			{
 				flipImageHorizontally();
-				isVAlid = false;
 			}
 
 			else if (flipDetect == "v" || flipDetect == "vertically")
 			{
 				flipImageVertically();
-				isVAlid = false;
 			}
 		}
 
@@ -712,7 +711,6 @@ int main()
 		else if (choice == "7")
 		{
 			detectImageEdges();
-			isVAlid = false;
 		}
 
 		else if (choice == "8")
@@ -729,28 +727,24 @@ int main()
 			cout << "Mirror (l)eft, (r)ight, (u)pper, (d)own side? \n";
 			cin >> mirordetect;
 
-			if (mirordetect == "d" || mirordetect == "down")
+			if (mirordetect == "d")
 			{
 				mirrorDown();
-				isVAlid = false;
 			}
 
-			else if (mirordetect == "u" || mirordetect == "up")
+			else if (mirordetect == "u")
 			{
 				mirrorUp();
-				isVAlid = false;
 			}
 
-			else if (mirordetect == "l" || mirordetect == "left")
+			else if (mirordetect == "l")
 			{
 				mirrorLeft();
-				isVAlid = false;
 			}
 
-			else if (mirordetect == "r" || mirordetect == "right")
+			else if (mirordetect == "r")
 			{
 				mirrorRight();
-				isVAlid = false;
 			}
 		}
 
@@ -767,8 +761,6 @@ int main()
 		else if (choice == "s")
 		{
 			saveImage();
-			isVAlid = false;
-			//contin = false;
 		}
 
 		else if (choice == "n")
@@ -779,7 +771,6 @@ int main()
 		else if (choice == "0")
 		{
 			cout << "HAVE A NICE DAY !! \n";
-			isVAlid = false;
 			contin = false;
 		}
 		else
