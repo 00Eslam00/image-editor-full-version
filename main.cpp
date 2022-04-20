@@ -37,8 +37,8 @@ void loadImage()
 	}
 	else
 	{
-		cout << "\n invalid name \n";
-		cout << " try again: \n ";
+		cout << "\ninvalid name \n";
+		cout << "try again: \n";
 		loadImage();
 	}
 }
@@ -64,8 +64,8 @@ void loadSecondImage()
 	}
 	else
 	{
-		cout << "\n invalid name \n";
-		cout << " try again: \n ";
+		cout << "\ninvalid name \n";
+		cout << "try again: \n";
         loadSecondImage();
 	}
 }
@@ -393,7 +393,7 @@ void rotate()
 		}
 	}
 
-	else if (ch == 2)
+	else if (ch == 3)
 	{
 		for (int i = 0; i < SIZE; i++)
 		{
@@ -506,7 +506,7 @@ void shuffle_image()
 		x++;
 	}
 
-	// fill fourth part of image
+	// fill third part of image
 	x = 0, y = 0;
 	for (int i = SIZE / 2; i < SIZE; i++)
 	{
