@@ -423,7 +423,7 @@ void shrinkImage()
 			image2[i][j] = image[i][j];
 		}
 	}
-	int index_i, index_j, value, new_size;
+	int index_i = 0 , index_j = 0, value, new_size;
 	cout << "enter a shrink value : ";
 	cin >> value;
 	new_size = SIZE / value;
