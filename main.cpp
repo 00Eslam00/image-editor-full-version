@@ -447,7 +447,7 @@ void shrinkImage()
 }
 
 //shuffel image parts
-void shuffle_image()
+void shuffel_image()
 {
 	int ch[4];
 
@@ -506,7 +506,7 @@ void shuffle_image()
 		x++;
 	}
 
-	// fill third part of image
+	// fill fourth part of image
 	x = 0, y = 0;
 	for (int i = SIZE / 2; i < SIZE; i++)
 	{
@@ -750,7 +750,7 @@ int main()
 
 		else if (choice == "b")
 		{
-			shuffle_image();
+			shuffel_image();
 		}
 
 		else if (choice == "c")
