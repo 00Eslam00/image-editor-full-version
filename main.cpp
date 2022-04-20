@@ -446,8 +446,8 @@ void shrinkImage()
 	}
 }
 
-//shuffel image parts
-void shuffel_image()
+//shuffle image parts
+void shuffle_image()
 {
 	int ch[4];
 
@@ -750,7 +750,7 @@ int main()
 
 		else if (choice == "b")
 		{
-			shuffel_image();
+			shuffle_image();
 		}
 
 		else if (choice == "c")
