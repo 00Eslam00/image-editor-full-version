@@ -37,8 +37,8 @@ void loadImage()
 	}
 	else
 	{
-		cout << "\ninvalid name \n";
-		cout << "try again: \n";
+		cout << "\n invalid name \n";
+		cout << " try again: \n ";
 		loadImage();
 	}
 }
@@ -64,8 +64,8 @@ void loadSecondImage()
 	}
 	else
 	{
-		cout << "\ninvalid name \n";
-		cout << "try again: \n";
+		cout << "\n invalid name \n";
+		cout << " try again: \n ";
         loadSecondImage();
 	}
 }
@@ -206,6 +206,7 @@ void mirrorRight()
 
 void detectImageEdges()
 {
+    int arr1[SIZE][SIZE],arr2[SIZE][SIZE];
 	//convert black and white
 	ConvertBlackAndWhite();
 
@@ -216,13 +217,34 @@ void detectImageEdges()
 		{
 			if (image[i][j] == image[i][j + 1])
 			{
-				image[i][j] = 255;
+				arr1[i][j] = 255;
 			}
 			else
 			{
-				image[i][j] = 0;
+				arr1[i][j] = 0;
 			}
 		}
+	}
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+			if (image[i][j] == image[i+1][j])
+			{
+				arr2[i][j] = 255;
+			}
+			else
+			{
+				arr2[i][j] = 0;
+			}
+		}
+	}
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+		 image[i][j]=arr1[i][j] & arr2[i][j];
+        }
 	}
 }
 
@@ -393,7 +415,7 @@ void rotate()
 		}
 	}
 
-	else if (ch == 3)
+	else if (ch == 2)
 	{
 		for (int i = 0; i < SIZE; i++)
 		{
@@ -423,7 +445,7 @@ void shrinkImage()
 			image2[i][j] = image[i][j];
 		}
 	}
-	int index_i = 0 , index_j = 0, value, new_size;
+	int index_i, index_j, value, new_size;
 	cout << "enter a shrink value : ";
 	cin >> value;
 	new_size = SIZE / value;
@@ -446,7 +468,7 @@ void shrinkImage()
 	}
 }
 
-//shuffle image parts
+//shuffel image parts
 void shuffle_image()
 {
 	int ch[4];
